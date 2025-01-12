@@ -70,6 +70,7 @@ function extractTextInfo(text) {
 
     document.getElementById('nome').value = nomeMatch ? nomeMatch[1].trim() : '';
     document.getElementById('apartamento').value = apartamentoMatch ? apartamentoMatch[1].trim() : '';
+    document.getElementById('codigo').value = codigoMatch ? codigoMatch[1].trim() : '';
 
     // Definir a quantidade como 1 automaticamente
     document.getElementById('quantidade').value = 1;
