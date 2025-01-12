@@ -11,9 +11,14 @@
 <div class="container">
     <h2>Cadastro de encomendas</h2>
 <!-- usando scaneador camera do dispositivo -->
-<p>Scanner de Encomendas<p>
+
+    <h1>Scanner Inteligente de Encomendas</h1>
     <video id="video" width="300" height="200" autoplay></video>
     <button onclick="startScanner()">Iniciar Scanner</button>
+    <button onclick="captureImage()">Capturar Imagem</button>
+
+    <!--<video id="video" width="300" height="200" autoplay></video>
+    <button onclick="startScanner()">Iniciar Scanner</button>-->
 
     <form id="formCadastro">
          
@@ -45,13 +50,19 @@
 
  </div>  
 </div>
-<!--importando o jsQR-->
-<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
+<script src="scanner.js"></script>
+
+<!--importando o jsQR
+<script src="https://cdn.jsdelivr.net/npm/jsqr/dist/jsQR.min.js"></script>-->
 
 <!--codigo do scanner usando antes
 <script src="scanner.js"></script> -->
 
 <!--script original-->
+
 <script src="script.js"></script>
+
 </body>
 </html>
