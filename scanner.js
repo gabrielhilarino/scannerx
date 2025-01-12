@@ -26,7 +26,7 @@ function captureImage() {
 function processImage(imageData) {
     Tesseract.recognize(
         imageData,
-        'eng', // Idioma de reconhecimento
+        'pt-br', // Idioma de reconhecimento
         {
             logger: info => console.log(info) // Opcional, para debug
         }
