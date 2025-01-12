@@ -24,54 +24,37 @@ function captureImage() {
 }
 
 function processImage(imageData) {
-    // Processar OCR para texto
     Tesseract.recognize(
         imageData,
-        'eng',
+        'pt-br', // Idioma de reconhecimento
         {
-            logger: info => console.log(info)
+            logger: info => console.log(info) // Opcional, para debug
         }
     ).then(({ data: { text } }) => {
-        extractTextInfo(text);
+        extractInfo(text);
     }).catch(error => {
         console.error(error);
-        alert("Erro ao processar a imagem para texto. Tente novamente.");
-    });
-
-    // Processar Código de Barras
-    Quagga.decodeSingle({
-        src: imageData,
-        numOfWorkers: 0,
-        inputStream: {
-            size: 800
-        },
-        decoder: {
-            readers: ["code_128_reader", "ean_reader"]
-        }
-    }, result => {
-        if (result && result.codeResult) {
-            document.getElementById('codigo').value = result.codeResult.code;
-        } else {
-            console.error("Erro ao ler o código de barras.");
-        }
+        alert("Erro ao processar a imagem. Tente novamente.");
     });
 }
 
-function extractTextInfo(text) {
+function extractInfo(text) {
     console.log("Texto extraído:", text);
 
     // Expressões regulares para buscar informações específicas
-    const nomeRegex = /Nome\s*:\s*([^\n]+)/i;
-    const apartamentoRegex = /Apartamento\s*:\s*([^\n]+)/i;
+    const nomeRegex = /Nome:\s*([^\n]+)/i;
+    const apartamentoRegex = /Apartamento:\s*([^\n]+)/i;
+    const blocoRegex = /Bloco:\s*([^\n]+)/i;
+    const codigoRegex = /Código de Barras:\s*([^\n]+)/i;
 
     // Extraindo e preenchendo os campos
     const nomeMatch = text.match(nomeRegex);
     const apartamentoMatch = text.match(apartamentoRegex);
+    const blocoMatch = text.match(blocoRegex);
+    const codigoMatch = text.match(codigoRegex);
 
     document.getElementById('nome').value = nomeMatch ? nomeMatch[1].trim() : '';
     document.getElementById('apartamento').value = apartamentoMatch ? apartamentoMatch[1].trim() : '';
+    document.getElementById('bloco').value = blocoMatch ? blocoMatch[1].trim() : '';
     document.getElementById('codigo').value = codigoMatch ? codigoMatch[1].trim() : '';
-
-    // Definir a quantidade como 1 automaticamente
-    document.getElementById('quantidade').value = 1;
 }
