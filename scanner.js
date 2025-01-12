@@ -75,7 +75,9 @@ function extractTextInfo(text) {
     document.getElementById('codigo').value = codigoMatch ? codigoMatch[1].trim() : '';
 
 // Definir a data atual automaticamente
+function setDefaultValues() {
 const today = new Date().toISOString().split('T')[0]; // Formato AAAA-MM-DD
 document.getElementById('data').value = today;
+}
 
 }
