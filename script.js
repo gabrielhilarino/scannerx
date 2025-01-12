@@ -168,6 +168,11 @@ function exportarParaTxt() {
     link.download = 'dados_salvos.txt';
     link.click();
 }
+//data sempre atualizada
+function pegarDataAtual(){
+    data = new Date();
+    document.getElementById('data').value = data.getDay()+'/'+data.getMonth()+'/'+data.getFullYear();
+ }
 
 // Inicializa a lista de dados ao carregar a página
 atualizarLista();
