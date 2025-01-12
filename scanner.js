@@ -1,4 +1,3 @@
-
 function startScanner() {
     const video = document.getElementById('video');
 
@@ -64,14 +63,14 @@ function extractTextInfo(text) {
     // Expressões regulares para buscar informações específicas
     const nomeRegex = /Nome\s*:\s*([^\n]+)/i;
     const apartamentoRegex = /Apartamento\s*:\s*([^\n]+)/i;
-    //const blocoRegex = /Bloco\s*:\s*([^\n]+)/i;
 
     // Extraindo e preenchendo os campos
     const nomeMatch = text.match(nomeRegex);
     const apartamentoMatch = text.match(apartamentoRegex);
-    //const blocoMatch = text.match(blocoRegex);
 
     document.getElementById('nome').value = nomeMatch ? nomeMatch[1].trim() : '';
     document.getElementById('apartamento').value = apartamentoMatch ? apartamentoMatch[1].trim() : '';
-    //document.getElementById('bloco').value = blocoMatch ? blocoMatch[1].trim() : '';
+
+    // Definir a quantidade como 1 automaticamente
+    document.getElementById('quantidade').value = 1;
 }
